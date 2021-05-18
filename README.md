@@ -1,2 +1,2 @@
 # MWA
-MWA -> Assgnm
+MWA -> Assgnms
