@@ -1,0 +1,79 @@
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\telo>mongo
+MongoDB shell version v4.4.6
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b5e4efe7-5c4e-4e28-8024-c1303f15cf37") }
+MongoDB server version: 4.4.6
+---
+The server generated these startup warnings when booting:
+        2021-05-19T15:38:54.512-05:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show dbs
+admin     0.000GB
+config    0.000GB
+local     0.000GB
+meanGame  0.000GB
+schoolDB  0.000GB
+> show dbs
+admin     0.000GB
+config    0.000GB
+local     0.000GB
+meanGame  0.000GB
+> use schoolDB
+switched to db schoolDB
+> db
+schoolDB
+> db.createCollection("Student");
+{ "ok" : 1 }
+> db.Student({[name: "Jack",Gpa:3.0},{name:"jim",Gpa:2.8},{name:"jill",Gpa:3.3}]})
+uncaught exception: SyntaxError: missing ] in computed property name :
+@(shell):1:17
+> db.Student([{name: "Jack",Gpa:3.0},
+... {
+... name:"jim",Gpa:2.8
+... },
+... {
+... name:"jill",Gpa:3.3}
+... }
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):7:0
+> ]
+uncaught exception: SyntaxError: expected expression, got ']' :
+@(shell):1:0
+>
+> db.Student([{name: "Jack",Gpa:3.0},{name:"jim",Gpa:2.8},{name:"jill",Gpa:3.3}]})
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:78
+> db.Student([{name: "Jack",Gpa:3.0},{name:"jim",Gpa:2.8},{name:"jill",Gpa:3.3}])
+uncaught exception: TypeError: db.Student is not a function :
+@(shell):1:1
+> db.Student.insert([{name: "Jack",Gpa:3.0},{name:"jim",Gpa:2.8},{name:"jill",Gpa:3.3}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 3,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.Student.count();
+3
+> db.Student.find();
+{ "_id" : ObjectId("60a5a32179f88d3927ee60a9"), "name" : "Jack", "Gpa" : 3 }
+{ "_id" : ObjectId("60a5a32179f88d3927ee60aa"), "name" : "jim", "Gpa" : 2.8 }
+{ "_id" : ObjectId("60a5a32179f88d3927ee60ab"), "name" : "jill", "Gpa" : 3.3 }
+>
