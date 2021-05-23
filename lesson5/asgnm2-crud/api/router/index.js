@@ -8,7 +8,15 @@ var publisher = require("../controller/publisher");
 //     console.log("request " + req.body.title);
 //     return;
 // });
-router.route("/games/:gameId/publisher").post(publisher.addonepublisher);
+router.route("/games/:gameId/publisher/:publisherid")
+    .get(publisher.getapublishergame)
+    .delete(publisher.gamesDeleteOne)
+    .put(publisher.updateput)
+    .patch(publisher.updatepatch);
+
+router.route("/games/:gameId/publisher")
+    .get(publisher.getallpublishers)
+    .post(publisher.addonepublisher);
 //router.route("/games/:gameId/reviews").post(reviews.addreviews);
 
 router.route("/games").get(controller.displayall)

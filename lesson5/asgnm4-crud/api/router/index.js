@@ -8,8 +8,15 @@ var address = require("../controller/address");
 //     console.log("request " + req.body.title);
 //     return;
 // });
-router.route("/Students/:studentId/address").post(address.addoneaddress);
-//router.route("/Students/:studentId/reviews").post(reviews.addreviews);
+router.route("/Students/:studentId/address")
+    .post(address.addoneaddress)
+    .get(address.getalladdresses);
+router.route("/Students/:studentId/address/:addressid")
+    .get(address.getoneaddress)
+    .delete(address.deleteoneaddress)
+    .put(address.updatedput)
+    .patch(address.updatepatch);
+
 
 router.route("/Students").get(controller.displayall)
     .post(controller.addone);

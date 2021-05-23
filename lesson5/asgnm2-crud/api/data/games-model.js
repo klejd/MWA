@@ -33,7 +33,7 @@ const gameSchema = new mongoose.Schema({
         "default": 1
     },
     publisher: {
-        type: [publisherSchema],
+        type: publisherSchema,
         required: false
     }
     //,
