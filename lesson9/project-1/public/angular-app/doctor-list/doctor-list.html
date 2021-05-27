@@ -1,0 +1,42 @@
+<h1> {{vm.title}} </h1>
+
+<!-- <ul>
+    <li ng-repeat="Doctors in vm.Doctor| orderBy:'-year'"><a ng-href="#/Doctor/{{Doctors._id}}">{{Doctors.name}} , {{ Doctors.speciality }} </a></li>
+</ul> -->
+<center>
+    <h2>Table of our Doctors</h2>
+</center>
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>speciality</th>
+        <th>Delete</th>
+        <th>View</th>
+        <!-- <th>GDP(ascending)</th>-->
+    </tr>
+    <!-- orderBy Ascending (+) -->
+    <tr ng-repeat="Doctors  in vm.Doctor ">
+        <td>{{Doctors.name}}</td>
+        <td>{{Doctors.speciality}}</td>
+
+        <td>
+            <button class="text text-danger" ng-click="vm.deleteDoctor(Doctors._id)">Delete </button>
+        </td>
+        <td>
+            <button class="text text-danger"><a ng-href="#/Doctor/{{Doctors._id}}">View</a></button>
+        </td>
+        <!-- <td>{{country.gdp}}</td> -->
+    </tr>
+
+</table>
+<form name="vm.doctorForm " ng-submit="vm.addDoctor() " class="Form-group "> To add a new game please fill in all the fields below:
+    <BR/> Name: <input type="text " name="name " required ng-model="vm.newdoctorname " style="color:black " />
+    <BR/> Speciality: <input type="text " name="speciality " required ng-model="vm.newdoctorspeciality " style="color:black " />
+
+    <br>
+    <br>
+    <button type="submit " class="btn-success ">Add Game</button>
+    <BR/>
+
+</form>

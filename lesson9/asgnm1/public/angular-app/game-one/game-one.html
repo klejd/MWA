@@ -1,0 +1,7 @@
+<h1>Information about game:
+    <p>{{vm.game.title}} {{vm.game.rate}}</p>
+</h1>
+<game-rating stars={{vm.rating}}></game-rating><br> Price: {{vm.game.price | currency}}<br/> Minimum Players: {{vm.game.minPlayers}} <br/> Maximum Players: {{vm.game.maxPlayers}} <br/> Publisher: {{vm.game.publisher.name}}<br/>
+
+<button><a href="../../index.html">Go Back</a></button>
+<button ng-click="vm.deletegame(game._id)"><a href="../../index.html">Delete</a></button>

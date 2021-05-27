@@ -1,0 +1,56 @@
+<h1> {{vm.title}} </h1>
+
+<!-- <ul>
+    <li ng-repeat="game in vm.games| orderBy:'-year'"><a ng-href="#/game/{{game._id}}">{{game.year}} , {{ game.title }} </a></li>
+</ul> -->
+<!-- <form action="/api/games" method="POST">
+    title: <input type="text" ng-maxlength="10" ng-minlength="3" name="title"><br><br> year: <input type="text" ng-maxlength="10" ng-minlength="3" name="year"><br><br> price <input type="text" ng-maxlength="10" ng-minlength="3" name="price"><br><br>
+    <input style="color: red;" type="submit" value="submit">
+</form> -->
+<center>
+    <h2>Table of our Games</h2>
+</center>
+
+<table class="table table-hover">
+    <tr>
+        <th>year</th>
+        <th>Title</th>
+        <th>Delete</th>
+        <th>View</th>
+        <!-- <th>GDP(ascending)</th>-->
+    </tr>
+    <!-- orderBy Ascending (+) -->
+    <tr ng-repeat="game  in vm.games | orderBy: '-year'">
+        <td>{{game.year}}</td>
+        <td>{{game.title}}</td>
+        <td>
+            <button class="text text-danger" ng-click="vm.deletegamee(game._id)">Delete </button>
+        </td>
+        <td>
+            <button class="text text-danger"><a ng-href="#/game/{{game._id}}">View</a></button>
+        </td>
+        <!-- <td>{{country.gdp}}</td> -->
+    </tr>
+
+</table>
+
+<form name="vm.gameForm " ng-submit="vm.addGame() " class="Form-group ">
+
+    To add a new game please fill in all the fields below:
+    <BR/> Title: <input type="text " name="title " required ng-model="vm.newGameTitle " style="color:black " />
+    <BR/> Price: <input type="text " name="price " required ng-model="vm.newGamePrice " style="color:black " />
+    <BR/> Year of Publication: <input type="text " name="year " required ng-model="vm.newGameYear " style="color:black " />
+    <BR/> Rating: <input type="text " name="rate " required ng-model="vm.newGameRating " style="color:black " />
+    <BR/> Minimum Number of Players: <input type="text " name="minPlayers " required ng-model="vm.newGameMinPlayers " style="color:black " />
+    <!-- //Ui validation required its enough  for the ui others should be in the server side  -->
+    <!-- <span ng-show="vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+
+    <BR/> Maximum Number of Players: <input type="text " name="maxPlayers " required ng-model="vm.newGameMaxPlayers " style="color:black " />
+    <BR/> Minimum Recommended Player Age: <input type="text " name="minAge " required ng-model="vm.newGameMinAge " style="color:black " />
+    <BR/> Designer name: <input type="text " name="designers " required ng-model="vm.newGameDesigner " style="color:black " />
+    <BR/>
+
+    <button type="submit " class="btn-success ">Add Game</button>
+    <BR/>
+
+</form>
