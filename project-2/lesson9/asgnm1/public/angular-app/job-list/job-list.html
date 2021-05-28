@@ -1,0 +1,64 @@
+<h1> {{vm.title}} </h1>
+
+<!-- <ul>
+    <li ng-repeat="job in vm.jobs| orderBy:'-year'"><a ng-href="#/job/{{job._id}}">{{job.year}} , {{ job.title }} </a></li>
+</ul> -->
+<!-- <form action="/api/jobs" method="POST">
+    title: <input type="text" ng-maxlength="10" ng-minlength="3" name="title"><br><br> year: <input type="text" ng-maxlength="10" ng-minlength="3" name="year"><br><br> price <input type="text" ng-maxlength="10" ng-minlength="3" name="price"><br><br>
+    <input style="color: red;" type="submit" value="submit">
+</form> -->
+<center>
+    <h2>Table of our jobs</h2>
+</center>
+
+<table class="table table-hover">
+    <tr>
+        <th>Title</th>
+        <th>Salary</th>
+        <th>Description</th>
+        <th>Experience</th>
+        <th>PostDate</th>
+        <th>Delete</th>
+        <th>View</th>
+        <!-- <th>GDP(ascending)</th>-->
+    </tr>
+    <!-- orderBy Ascending (+) -->
+    <tr ng-repeat="job  in vm.jobs | orderBy: '-year'">
+        <td>{{job.title}}</td>
+        <td>{{job.salary}}</td>
+        <td>{{job.description}}</td>
+        <td>{{job.experience}}</td>
+        <td>{{job.PostDate}}</td>
+        <td>
+            <button class="text text-danger" ng-click="vm.deletejobe(job._id)">Delete </button>
+        </td>
+        <td>
+            <button class="text text-danger"><a ng-href="#/job/{{job._id}}">View</a></button>
+        </td>
+        <!-- <td>{{country.gdp}}</td> -->
+    </tr>
+
+</table>
+<div class="container">
+    <button style="float: left;" class="btn btn-primary  btn-lg">Previous</button>
+    <button style="float: right; " type="button" class="btn btn-primary  btn-lg">Next</button>
+</div>
+<br>
+<br>
+<form name="vm.jobForm " ng-submit="vm.addjob() " class="form-group ">
+    <div class="container">
+        <h5 style="text-align: center; font-size: 1.5vw;">To add a new job please fill in all the fields below:
+            <h5>
+                <BR/> Title: <input type="text " name="title " class="form-control" required ng-model="vm.newjobTitle " style="color:black " />
+                <BR/> Salary: <input type="text " name="salary " class="form-control" required ng-model="vm.newjobsalary " style="color:black " />
+                <BR/> Description: <input type="text " name="description " class="form-control" required ng-model="vm.newjobdescription " style="color:black " />
+                <BR/> Experience: <input type="text " name="experience " class="form-control" required ng-model="vm.newjobdexperience " style="color:black " />
+                <BR/> PostDate: <input type="text " name="PostDate " class="form-control" required ng-model="vm.newPostDatee " style="color:black " />
+
+                <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right;" type="submit " class="btn-success btn-lg">Add job</button>
+                <button type="reset " class="btn-success btn-lg">Reset</button>
+                <BR/>
+    </div>
+</form>

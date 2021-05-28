@@ -1,0 +1,19 @@
+<div class="container" style="border-style:dotted;">
+    <div class="row">
+        <h2 style="text-align: center;">Information about job:
+            <p>{{vm.job.title}} {{vm.job.rate}}</p>
+        </h2>
+        <!-- <job-rating stars={{vm.rating}}></job-rating> -->
+        <br>
+        <p>Salary: {{vm.job.salary | currency}}</p>
+        <br/>
+        <p>Description: {{vm.job.description}}</p>
+        <br/>
+        <p>Experience {{vm.job.experience}}</p>
+        <br/>
+        <p>Post Date: {{vm.job.PostDate}} </p><br/>
+
+        <button class="btn-success btn-lg" style="color: white;"><a href="../../index.html">Go Back</a></button>
+        <button class="btn-warning btn-lg" style="color: white; float: right;" ng-click="vm.deletejob(job._id)"><a href="../../index.html">Delete</a></button>
+    </div>
+</div>
