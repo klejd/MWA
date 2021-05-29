@@ -2,12 +2,20 @@ angular.module("meanjobs").controller("jobsController", jobsController);
 
 function jobsController($routeParams, jobDataFactory, $route) {
     const vm = this;
+    vm.count = 2;
+    vm.offset = 0;
     vm.title = "Search for Job";
     let jobId = $routeParams.id;
     // vm.isSubmitted=false;
-    jobDataFactory.getAlljobs().then(function(response) {
-        vm.jobs = response;
-    });
+    loadData = (count, offset) => {
+        jobDataFactory.getAlljobs(count, offset).then(function({ jobs, maxCount }) {
+            vm.jobs = jobs;
+            vm.maxCount = maxCount;
+        });
+
+    }
+    loadData(vm.count, vm.offset);
+
     // reminder --> "pass the id"
     vm.deletejobe = function(id) {
         jobDataFactory.deleteOnejobIndex(id).then(function(response) {
@@ -16,6 +24,13 @@ function jobsController($routeParams, jobDataFactory, $route) {
             $route.reload();
 
         });
+    }
+    vm.nextPage = (type) => {
+        //if type is next we go next otherwise we go back 
+        vm.offset = (type == "next") ? vm.offset + vm.count : vm.offset - vm.count;
+        console.log(vm.offset);
+        // jobDataFactory.getAlljobs(vm.count, vm.offset).then(({ jobs, maxCount }) => vm.jobs = jobs)
+        loadData(vm.count, vm.offset);
     }
     vm.addjob = function() {
         console.log("adding........");

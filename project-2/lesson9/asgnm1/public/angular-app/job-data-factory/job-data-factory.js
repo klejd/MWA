@@ -21,8 +21,8 @@ function jobDataFactory($http) {
         return $http.post("/api/jobs/", job).then(complete).catch(failed);
     }
 
-    function getAlljobs() {
-        return $http.get("/api/jobs").then(complete).catch(failed);
+    function getAlljobs(count, offset) {
+        return $http.get(`/api/jobs?count=${count}&offset=${offset}`).then(complete).catch(failed);
     };
 
     function getOnejob(id) {

@@ -1,0 +1,38 @@
+<section>
+    <h1>
+        <form class="searchform">
+            <i class="fa fa-search">
+            <input ng-model="search" type="search" name="jobs" placeholder="'Software Engineer','Web Developer',etc..">
+        </i>
+            <input type="submit" class="btn-primary" value="search">
+        </form>
+    </h1>
+</section>
+<table class="table table-hover">
+    <tr>
+        <th>Title</th>
+        <th>Salary</th>
+        <th>Description</th>
+        <th>Experience</th>
+        <th>PostDate</th>
+        <!-- <th>Delete</th>
+        <th>View</th> -->
+        <!-- <th>GDP(ascending)</th>-->
+    </tr>
+    <!-- orderBy Ascending (+) -->
+    <tr ng-repeat="job  in vm.jobs | filter:search">
+        <td>{{job.title}}</td>
+        <td>{{job.salary}}</td>
+        <td>{{job.description}}</td>
+        <td>{{job.experience}}</td>
+        <td>{{job.PostDate}}</td>
+        <!-- <td>
+            <button class="text text-danger" ng-click="vm.deletejobe(job._id)">Delete </button>
+        </td>
+        <td>
+            <button class="text text-danger"><a ng-href="#/job/{{job._id}}">View</a></button>
+        </td> -->
+        <!-- <td>{{country.gdp}}</td> -->
+    </tr>
+
+</table>

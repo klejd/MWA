@@ -10,6 +10,10 @@ function config($routeProvider, $locationProvider) {
         templateUrl: "angular-app/job-one/job-one.html",
         controller: "JobController",
         controllerAs: "vm"
+    }).when("/search", {
+        templateUrl: "angular-app/job-search/job-search.html",
+        controller: "searchController",
+        controllerAs: "vm"
     })
 
 }

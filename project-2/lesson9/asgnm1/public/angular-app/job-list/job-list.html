@@ -8,7 +8,7 @@
     <input style="color: red;" type="submit" value="submit">
 </form> -->
 <center>
-    <h2>Table of our jobs</h2>
+    <h2>Table of our jobs(Pagination)</h2>
 </center>
 
 <table class="table table-hover">
@@ -23,7 +23,7 @@
         <!-- <th>GDP(ascending)</th>-->
     </tr>
     <!-- orderBy Ascending (+) -->
-    <tr ng-repeat="job  in vm.jobs | orderBy: '-year'">
+    <tr ng-repeat="job  in vm.jobs ">
         <td>{{job.title}}</td>
         <td>{{job.salary}}</td>
         <td>{{job.description}}</td>
@@ -40,25 +40,27 @@
 
 </table>
 <div class="container">
-    <button style="float: left;" class="btn btn-primary  btn-lg">Previous</button>
-    <button style="float: right; " type="button" class="btn btn-primary  btn-lg">Next</button>
+
+    <button style="float: left;" ng-hide="vm.offset==0" ng-click=" vm.nextPage( 'prev') " class="btn btn-primary btn-lg ">Previous</button>
+
+    <button style="float: right;" ng-hide="vm.maxCount<=(vm.offset+vm.count)" type="button " ng-click="vm.nextPage( 'next') " class="btn btn-primary btn-lg ">Next</button>
 </div>
 <br>
 <br>
 <form name="vm.jobForm " ng-submit="vm.addjob() " class="form-group ">
-    <div class="container">
-        <h5 style="text-align: center; font-size: 1.5vw;">To add a new job please fill in all the fields below:
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To add a new job please fill in all the fields below:
             <h5>
-                <BR/> Title: <input type="text " name="title " class="form-control" required ng-model="vm.newjobTitle " style="color:black " />
-                <BR/> Salary: <input type="text " name="salary " class="form-control" required ng-model="vm.newjobsalary " style="color:black " />
-                <BR/> Description: <input type="text " name="description " class="form-control" required ng-model="vm.newjobdescription " style="color:black " />
-                <BR/> Experience: <input type="text " name="experience " class="form-control" required ng-model="vm.newjobdexperience " style="color:black " />
+                <BR/> Title: <input type="text " name="title " class="form-control " required ng-model="vm.newjobTitle " style="color:black " />
+                <BR/> Salary: <input type="text " name="salary " class="form-control " required ng-model="vm.newjobsalary " style="color:black " />
+                <BR/> Description: <input type="text " name="description " class="form-control " required ng-model="vm.newjobdescription " style="color:black " />
+                <BR/> Experience: <input type="text " name="experience " class="form-control " required ng-model="vm.newjobdexperience " style="color:black " />
                 <BR/> PostDate: <input type="text " name="PostDate " class="form-control" required ng-model="vm.newPostDatee " style="color:black " />
 
                 <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
                 <br>
-                <button style="float: right;" type="submit " class="btn-success btn-lg">Add job</button>
-                <button type="reset " class="btn-success btn-lg">Reset</button>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">Add job</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
                 <BR/>
     </div>
 </form>

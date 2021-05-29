@@ -22,34 +22,66 @@ module.exports.display1 = (req, res) => {
 
 }
 
-// todo
+// todo klejdi
+// module.exports.pagination = (req, res) => {
+//     const pag = parseInt(req.query.page);
+//     const limit = parseInt(rq.query.limit);
+//     const start = (page - 1) * limit;
+//     const stop = page * limit;
+//     const result = job +
+// }
+// module.exports.search = (req, res) => {
+//     const {
+//         search
+//     } = req.query;
+//     Job.find({}, (err, searchData)) {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             //res.render(view [, locals] [, callback])
+
+//         }
+//     }
+
+// }
 module.exports.displayall = (req, res) => {
-    let offset = 0;
-    let count = 5;
-    const maxCount = 5;
+    let offset = req.params.offset;
+    let count = req.params.count;
+    // return count;
+    let maxCount = 0;
+    // blocking funcnt
+    Job.count({}, (error, result) => {
+        maxCount = result
 
-    if (req.query && req.query.offset) {
-        offset = parseInt(req.query.offset);
-    }
-    if (req.query && req.query.count) {
-        count = parseInt(req.query.count);
-    }
-    if (isNaN(offset) || isNaN(count)) {
-        res.status(400).json({ message: "QueryString Offset and Count must be a number" });
-        return;
-    }
-    if (count > maxCount) {
-        res.status(400).json({ message: "QueryString Count must not exceed " + maxCount });
-    } else {
-        Job.find().skip(offset).limit(maxCount).exec((err, jobs) => {
 
-            if (err) {
-                res.status(400).json(err);
-            } else {
-                res.status(200).json(jobs);
-            }
-        });
-    }
+        console.log(maxCount);
+
+        if (req.query && req.query.offset) {
+            offset = parseInt(req.query.offset);
+        }
+        if (req.query && req.query.count) {
+            count = parseInt(req.query.count);
+        }
+        if (isNaN(offset) || isNaN(count)) {
+            res.status(400).json({ message: "QueryString Offset and Count must be a number" });
+            return;
+        }
+        if (count > maxCount) {
+            res.status(400).json({ message: "QueryString Count must not exceed " + maxCount });
+        } else {
+            Job.find().skip(offset).limit(count).exec((err, jobs) => {
+
+                if (err) {
+                    res.status(400).json(err);
+                } else {
+                    res.status(200).json({
+                        jobs,
+                        maxCount
+                    });
+                }
+            });
+        }
+    });
 }
 
 
