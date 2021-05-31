@@ -4,7 +4,7 @@
             <i class="fa fa-search">
             <input ng-model="search" type="search" name="jobs" placeholder="'Software Engineer','Web Developer',etc..">
         </i>
-            <input type="submit" class="btn-primary" value="search">
+            <a href="/#/"> <button style="margin-left: 25vw; margin-right: 25vw; " class="btn btn-primary btn-lg">Go Back </button></a>
         </form>
     </h1>
 </section>
@@ -28,10 +28,10 @@
         <td>{{job.PostDate}}</td>
         <!-- <td>
             <button class="text text-danger" ng-click="vm.deletejobe(job._id)">Delete </button>
-        </td>
-        <td>
-            <button class="text text-danger"><a ng-href="#/job/{{job._id}}">View</a></button>
-        </td> -->
+                </td>
+                <td>
+                    <button class="text text-danger"><a ng-href="#/job/{{job._id}}">View</a></button>
+                </td> -->
         <!-- <td>{{country.gdp}}</td> -->
     </tr>
 

@@ -25,10 +25,10 @@
     <!-- orderBy Ascending (+) -->
     <tr ng-repeat="job  in vm.jobs ">
         <td>{{job.title}}</td>
-        <td>{{job.salary}}</td>
+        <td>{{job.salary | currency}}</td>
         <td>{{job.description}}</td>
         <td>{{job.experience}}</td>
-        <td>{{job.PostDate}}</td>
+        <td>{{job.PostDate | date: MM/dd/yyyy}}</td>
         <td>
             <button class="text text-danger" ng-click="vm.deletejobe(job._id)">Delete </button>
         </td>
@@ -42,8 +42,8 @@
 <div class="container">
 
     <button style="float: left;" ng-hide="vm.offset==0" ng-click=" vm.nextPage( 'prev') " class="btn btn-primary btn-lg ">Previous</button>
-
-    <button style="float: right;" ng-hide="vm.maxCount<=(vm.offset+vm.count)" type="button " ng-click="vm.nextPage( 'next') " class="btn btn-primary btn-lg ">Next</button>
+    <a href="/#/search"> <button style="margin-left: 25vw; margin-right: 25vw; " class="btn btn-primary btn-lg">To Search </button></a>
+    <button style=" float: right; " ng-hide="vm.maxCount<=(vm.offset+vm.count) " type="button " ng-click="vm.nextPage( 'next') " class="btn btn-primary btn-lg ">Next</button>
 </div>
 <br>
 <br>
@@ -55,7 +55,7 @@
                 <BR/> Salary: <input type="text " name="salary " class="form-control " required ng-model="vm.newjobsalary " style="color:black " />
                 <BR/> Description: <input type="text " name="description " class="form-control " required ng-model="vm.newjobdescription " style="color:black " />
                 <BR/> Experience: <input type="text " name="experience " class="form-control " required ng-model="vm.newjobdexperience " style="color:black " />
-                <BR/> PostDate: <input type="text " name="PostDate " class="form-control" required ng-model="vm.newPostDatee " style="color:black " />
+                <BR/> PostDate: <input type="text " name="PostDate " class="form-control " required ng-model="vm.newPostDatee " style="color:black " />
 
                 <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
                 <br>

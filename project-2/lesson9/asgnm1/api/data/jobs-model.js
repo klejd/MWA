@@ -29,7 +29,7 @@ const jobSchema = new mongoose.Schema({
         required: false
     },
 
-    postDate: String,
+    PostDate: Date,
     location: {
         type: [locationSchema],
 

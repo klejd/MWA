@@ -5,7 +5,7 @@ function jobsController($routeParams, jobDataFactory, $route) {
     vm.count = 2;
     vm.offset = 0;
     vm.title = "Search for Job";
-    let jobId = $routeParams.id;
+    // let jobId = $routeParams.id;
     // vm.isSubmitted=false;
     loadData = (count, offset) => {
         jobDataFactory.getAlljobs(count, offset).then(function({ jobs, maxCount }) {

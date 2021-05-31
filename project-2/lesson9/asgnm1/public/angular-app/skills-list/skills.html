@@ -1,0 +1,79 @@
+<h1>Skills Page</h1>
+<!-- id:{{job._id}} {{vm.job.titlee}} -->
+<table class="table table-hover">
+    <tr>
+        <th>country</th>
+        <!-- <th>state</th> -->
+        <th>city</th>
+        <!-- <th>street</th> -->
+        <!-- <th>zip</th> -->
+        <th>Delete</th>
+
+    </tr>
+    <!-- orderBy Ascending (+) -->
+    <tr ng-repeat="location  in vm.locations ">
+        <td>{{location.country}}</td>
+        <!-- <td>{{location.state }}</td> -->
+        <td>{{location.city}}</td>
+        <!-- <td>{{location.street}}</td> -->
+        <!-- <td>{{location.zip}}</td> -->
+        <td>
+            <button class="text text-danger" ng-click="vm.deleteOneSkillIndex(vm.job._id,skills._id)">Delete </button>
+        </td>
+
+        <!-- <td>{{country.gdp}}</td> -->
+
+    </tr>
+
+</table>
+<form name="vm.addlocationForm " ng-submit="vm.addOneskill(vm.job._id) " class="form-group ">
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To add a job please fill in all the fields below:
+            <h5>
+                <BR/> country: <input type="text " name="country " class="form-control " required ng-model="vm.countryy " style="color:black " />
+                <!-- <BR/> state: <input type="text " name="state " class="form-control " required ng-model="vm.statee " style="color:black " /> -->
+                <BR/> city: <input type="text " name="city " class="form-control " required ng-model="vm.cityy " style="color:black " />
+                <!-- <BR/> street: <input type="text " name="street " class="form-control " required ng-model="vm.streett " style="color:black " /> -->
+                <!-- <BR/> zip: <input type="text " name="zip " class="form-control " required ng-model="vm.zipp " style="color:black " /> -->
+
+                <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">Add job</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
+                <BR/>
+    </div>
+</form>
+<form name="vm.patchlocationForm " ng-submit="vm.partialUpdateskill(vm.job._id,vm.skills[0]._id) " class="form-group ">
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To partialUpdate a job please fill in all the fields below:
+            <h5>
+                <BR/> country: <input type="text " name="country " class="form-control " ng-model="vm.countryyyy " style="color:black " />
+                <!-- <BR/> state: <input type="text " name="state " class="form-control " required ng-model="vm.statee " style="color:black " /> -->
+                <BR/> city: <input type="text " name="city " class="form-control " ng-model="vm.cityyyy " style="color:black " />
+                <!-- <BR/> street: <input type="text " name="street " class="form-control " required ng-model="vm.streett " style="color:black " /> -->
+                <!-- <BR/> zip: <input type="text " name="zip " class="form-control " required ng-model="vm.zipp " style="color:black " /> -->
+
+                <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">PartialUpdate job</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
+                <BR/>
+    </div>
+</form>
+<form name="vm.puthlocationForm " ng-submit="vm.fullupdate(vm.job._id,vm.locations[0]._id) " class="form-group ">
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To fullUpdate a job please fill in all the fields below:
+            <h5>
+                <BR/> country: <input type="text " name="country " class="form-control " required ng-model="vm.countryyy " style="color:black " />
+                <!-- <BR/> state: <input type="text " name="state " class="form-control " required ng-model="vm.statee " style="color:black " /> -->
+                <BR/> city: <input type="text " name="city " class="form-control " required ng-model="vm.cityyy " style="color:black " />
+                <!-- <BR/> street: <input type="text " name="street " class="form-control " required ng-model="vm.streett " style="color:black " /> -->
+                <!-- <BR/> zip: <input type="text " name="zip " class="form-control " required ng-model="vm.zipp " style="color:black " /> -->
+
+                <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">FullUpdate job</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
+                <BR/>
+    </div>
+</form>

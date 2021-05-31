@@ -184,7 +184,7 @@ module.exports.updatepatch = (req, res) => {
 //updateput
 module.exports.updateput = function(req, res) {
     const jobId = req.params.jobId;
-    Job.findById(jobId).select("-reviews -publisher").exec(function(err, jobs) {
+    Job.findById(jobId).exec(function(err, jobs) {
         const response = {
             status: 204,
             message: Job
@@ -205,7 +205,7 @@ module.exports.updateput = function(req, res) {
                 jobs.salary = parseFloat(req.body.salary),
                 jobs.description = req.body.description,
                 jobs.experience = req.body.experience,
-                jobs.skills = req.body.skills,
+                // jobs.skills = req.body.skills,
                 jobs.PostDate = req.body.PostDate
             jobs.save(function(err, updatejob) {
                 if (err) {

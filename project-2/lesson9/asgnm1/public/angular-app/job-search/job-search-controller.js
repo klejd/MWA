@@ -10,7 +10,6 @@ function searchController($routeParams, jobDataFactory, $route) {
             vm.jobs = jobs;
             vm.maxCount = maxCount;
         });
-
     }
     loadData(vm.count, vm.offset);
 }

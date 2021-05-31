@@ -1,0 +1,63 @@
+<h1> {{vm.title}} </h1>
+
+
+<center>
+    <h2>Table of our Nobels(Pagination)</h2>
+</center>
+
+<table class="table table-hover">
+    <tr>
+        <th>Firstname</th>
+        <th>Year</th>
+        <th>Gender</th>
+        <th>Category</th>
+        <th>Affiliation</th>
+        <th>BornCountry</th>
+        <th>Delete</th>
+        <th>View</th>
+
+    </tr>
+
+    <tr ng-repeat="nobel  in vm.nobels ">
+        <td>{{nobel.firstname}}</td>
+        <td>{{nobel.year }}</td>
+        <td>{{nobel.gender}}</td>
+        <td>{{nobel.category}}</td>
+        <td>{{nobel.affiliation }}</td>
+        <td>{{nobel.bornCountry}}</td>
+        <!-- //| date: MM/dd/yyyy -->
+        <td>
+            <button class="text text-danger" ng-click="vm.deletenobele(nobel._id)">Delete </button>
+        </td>
+        <td>
+            <button class="text text-danger"><a ng-href="#/nobel/{{nobel._id}}">View</a></button>
+        </td>
+
+    </tr>
+
+</table>
+<div class="container">
+
+    <button style="float: left;" ng-hide="vm.offset==0" ng-click=" vm.nextPage( 'prev') " class="btn btn-primary btn-lg ">Previous</button>
+    <a href="/#/search"> <button style="margin-left: 25vw; margin-right: 25vw; " class="btn btn-primary btn-lg">To Search </button></a>
+    <button style=" float: right; " ng-hide="vm.maxCount<=(vm.offset+vm.count) " type="button " ng-click="vm.nextPage( 'next') " class="btn btn-primary btn-lg ">Next</button>
+</div>
+<br>
+<br>
+<form name="vm.nobelForm " ng-submit="vm.addnobel() " class="form-group ">
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To add a new nobel please fill in all the fields below:
+            <h5>
+                <BR/> Firstname: <input type="text " name="firstname " class="form-control " required ng-model="vm.firstnamee " style="color:black " />
+                <BR/> year: <input type="text " name="year " class="form-control " required ng-model="vm.yearr " style="color:black " />
+                <BR/> gender: <input type="text " name="gender " class="form-control " required ng-model="vm.genderr " style="color:black " />
+                <BR/> category: <input type="text " name="category " class="form-control " required ng-model="vm.categoryy " style="color:black " />
+                <BR/> affiliation: <input type="text " name="affiliation " class="form-control " required ng-model="vm.affiliationn " style="color:black " />
+                <BR/> bornCountry: <input type="text " name="bornCountry " class="form-control " required ng-model="vm.bornCountryy " style="color:black " />
+                <!-- <span ng-show="vm.nobelForm.minPlayers.$dirty && vm.nobelForm.minPlayers.$invalid && vm.nobelForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">Add nobel</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
+                <BR/>
+    </div>
+</form>

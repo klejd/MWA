@@ -12,8 +12,48 @@
         <p>Experience {{vm.job.experience}}</p>
         <br/>
         <p>Post Date: {{vm.job.PostDate}} </p><br/>
+        <ul>
+            <li ng-repeat="job in vm.job.skills">{{job.skills.desc}}</li>
+        </ul>
 
+        <button class="btn-success btn-sm" style="color: white;"><a href="/#/job/{{vm.job._id}}/locations">View Location</a></button>
+        <button class="btn-success btn-sm" style="color: white;"><a href="/#/job/{{vm.job._id}}/skills">View Skills</a></button>
+        <br> <br>
         <button class="btn-success btn-lg" style="color: white;"><a href="../../index.html">Go Back</a></button>
         <button class="btn-warning btn-lg" style="color: white; float: right;" ng-click="vm.deletejob(job._id)"><a href="../../index.html">Delete</a></button>
     </div>
 </div>
+<form name="vm.updatejobForm " ng-submit="vm.fullupdate() " class="form-group ">
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To Full update a job please fill in all the fields below:
+            <h5>
+                <BR/> Title: <input type="text " name="title " class="form-control " required ng-model="vm.titlee " style="color:black " />
+                <BR/> Salary: <input type="text " name="salary " class="form-control " required ng-model="vm.salaryy " style="color:black " />
+                <BR/> Description: <input type="text " name="description " class="form-control " required ng-model="vm.descriptionn " style="color:black " />
+                <BR/> Experience: <input type="text " name="experience " class="form-control " required ng-model="vm.experiencee " style="color:black " />
+                <BR/> PostDate: <input type="text " name="PostDate " class="form-control " required ng-model="vm.PostDatee " style="color:black " />
+
+                <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">FullUpdate job</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
+                <BR/>
+    </div>
+</form>
+<form name="vm.updatejobForm " ng-submit="vm.partialupdate() " class="form-group ">
+    <div class="container ">
+        <h5 style="text-align: center; font-size: 1.5vw; ">To Partial update a job please fill in all the fields below:
+            <h5>
+                <BR/> Title: <input type="text " name="title " class="form-control " required ng-model="vm.titlee " style="color:black " />
+                <BR/> Salary: <input type="text " name="salary " class="form-control " required ng-model="vm.salaryy " style="color:black " />
+                <BR/> Description: <input type="text " name="description " class="form-control " required ng-model="vm.descriptionn " style="color:black " />
+                <BR/> Experience: <input type="text " name="experience " class="form-control " required ng-model="vm.experiencee " style="color:black " />
+                <BR/> PostDate: <input type="text " name="PostDate " class="form-control " required ng-model="vm.PostDatee " style="color:black " />
+
+                <!-- <span ng-show="vm.jobForm.minPlayers.$dirty && vm.jobForm.minPlayers.$invalid && vm.jobForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+                <br>
+                <button style="float: right; " type="submit " class="btn-success btn-lg ">FullUpdate job</button>
+                <button type="reset " class="btn-success btn-lg ">Reset</button>
+                <BR/>
+    </div>
+</form>

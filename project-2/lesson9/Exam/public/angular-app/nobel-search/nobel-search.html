@@ -1,0 +1,34 @@
+<section>
+    <h1>
+        <form class="searchform">
+            <i class="fa fa-search">
+            <input ng-model="search" type="search" name="nobels" placeholder="'Software Engineer','Web Developer',etc..">
+        </i>
+            <a href="/#/"> <button style="margin-left: 25vw; margin-right: 25vw; " class="btn btn-primary btn-lg">Go Back </button></a>
+        </form>
+    </h1>
+</section>
+<table class="table table-hover">
+    <tr>
+        <th>Firstname</th>
+        <th>Year</th>
+        <th>Gender</th>
+        <th>Category</th>
+        <th>Affiliation</th>
+        <th>BornCountry</th>
+
+
+    </tr>
+
+    <tr ng-repeat="nobel  in vm.nobels|filter:search ">
+        <td>{{nobel.firstname}}</td>
+        <td>{{nobel.year}}</td>
+        <td>{{nobel.gender}}</td>
+        <td>{{nobel.category}}</td>
+        <td>{{nobel.affiliation }}</td>
+        <td>{{nobel.bornCountry}}</td>
+        <!-- //| date: MM/dd/yyyy -->
+
+    </tr>
+
+</table>

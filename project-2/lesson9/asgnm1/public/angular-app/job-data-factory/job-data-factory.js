@@ -6,7 +6,9 @@ function jobDataFactory($http) {
         getOnejob: getOnejob,
         addOnejob: addOnejob,
         deleteOnejob: deleteOnejob,
-        deleteOnejobIndex: deleteOnejobIndex
+        deleteOnejobIndex: deleteOnejobIndex,
+        FullUpdateOnejob: FullUpdateOnejob,
+        partialUpdate: partialUpdate
     };
 
     function deleteOnejobIndex(id) {
@@ -17,10 +19,20 @@ function jobDataFactory($http) {
         return $http.delete("/api/jobs/" + id).then(complete).catch(failed);
     }
 
+    function FullUpdateOnejob(id, job) {
+        return $http.put("/api/jobs/" + id, job)
+            .then(complete).catch(failed);
+    }
+
+    function partialUpdate(id, job) {
+        return $http.patch("/api/jobs/" + id, job)
+            .then(complete).catch(failed);
+    }
+
     function addOnejob(job) {
         return $http.post("/api/jobs/", job).then(complete).catch(failed);
     }
-
+    //toDo => count should be equal with maxcount that we got from backend
     function getAlljobs(count, offset) {
         return $http.get(`/api/jobs?count=${count}&offset=${offset}`).then(complete).catch(failed);
     };
