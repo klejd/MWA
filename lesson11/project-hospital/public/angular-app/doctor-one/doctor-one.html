@@ -1,0 +1,19 @@
+<br>
+<br><br>
+<h1>
+    Information about Doctors:
+
+</h1>
+
+Name: {{vm.Doctor.name | uppercase}}<br/> Speciality: {{vm.Doctor.speciality}}
+<h3 style="color: blueviolet;">Addresses
+</h3>
+<li style="color: red;" ng-repeat="Doctors in vm.Doctor.address">{{Doctors.country}} , {{ Doctors.city }} ,{{Doctors.zip}}
+
+</li>
+<h3 style="color: saddlebrown;">Reviews</h3>
+<li style="color: crimson;" ng-repeat="Doctors in vm.Doctor.reviews|orderBy :'-date'">{{Doctors.name}} , {{ Doctors.review }} ,{{Doctors.date}}
+
+</li><br/>
+
+<button><a href="../../index.html">Go Back</a></button>

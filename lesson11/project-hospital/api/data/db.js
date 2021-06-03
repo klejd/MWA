@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const dbName = "Hospital";
 const dbURL = "mongodb://localhost:27017/" + dbName;
-require("./doctor-model");
+require("./user-model");
 require("./Patient-model");
-require("./user-model")
+require("./doctor-model")
 
 mongoose.connect(dbURL, {
     useNewUrlParser: true,
