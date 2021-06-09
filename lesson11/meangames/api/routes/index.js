@@ -15,32 +15,32 @@ router.route("/users").post(controllerUsers.usersRegister);
 router.route("/auth").post(controllerUsers.usersAuthenticate);
 
 router.route("/games/:gameId/publisher/:publisherid")
-    .get(publisher.getapublishergame)
-    .delete(publisher.gamesDeleteOne)
-    .put(publisher.updateput)
-    .patch(publisher.updatepatch);
+    .get(authenticateToken, publisher.getapublishergame)
+    .delete(authenticateToken, publisher.gamesDeleteOne)
+    .put(authenticateToken, publisher.updateput)
+    .patch(authenticateToken, publisher.updatepatch);
 
 router.route("/games/:gameId/publisher")
-    .get(publisher.getallpublishers)
-    .post(publisher.addonepublisher);
+    .get(authenticateToken, publisher.getallpublishers)
+    .post(authenticateToken, publisher.addonepublisher);
 
 router.route("/games/:gameId/reviews/:reviewid")
-    .get(reviews.getbyid)
-    .delete(reviews.deleteonereview)
-    .put(reviews.updatedput)
-    .patch(reviews.updatepatch);
+    .get(authenticateToken, reviews.getbyid)
+    .delete(authenticateToken, reviews.deleteonereview)
+    .put(authenticateToken, reviews.updatedput)
+    .patch(authenticateToken, reviews.updatepatch);
 router.route("/games/:gameId/reviews")
-    .post(reviews.addreviews)
-    .get(reviews.getallreviews);
+    .post(authenticateToken, reviews.addreviews)
+    .get(authenticateToken, reviews.getallreviews);
 
 router.route("/games").get(controller.displayall)
-    .post(controller.addone);
-
+    .post(authenticateToken, controller.addone);
+router.route("/gamess").get(controller.searchbyyear);
 router.route("/games/:gameId").get(controller.display1)
-    .put(controller.updateput)
-    .delete(controller.gamesDeleteOne)
-    .patch(controller.updatepatch);
-
+    .put(authenticateToken, controller.updateput)
+    .delete(authenticateToken, controller.gamesDeleteOne)
+    .patch(authenticateToken, controller.updatepatch);
+// router.route("/gamess").get(controller.displayall1)
 router.route('/user').get(authenticateToken, controllerUsers.getProfile);
 //getprofile
 

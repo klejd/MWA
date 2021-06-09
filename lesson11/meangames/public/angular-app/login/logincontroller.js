@@ -9,7 +9,7 @@ function LoginController($window, $location, AuthFactory, UserDataFactory, jwtHe
     //         return false;
     //     }
     // }
-    // vm.loggedInUser = "Klejdi";
+
 
     vm.isActiveTab = function(url) {
         const currentPath = $location.path().split("/")[1];
@@ -39,11 +39,11 @@ function LoginController($window, $location, AuthFactory, UserDataFactory, jwtHe
                     //Read the payload of a token
                     const token = localStorage.token;
                     const decodedToken = jwtHelper.decodeToken(token);
-                    // vm.loggedInUser = decodedToken.name;
-                    UserDataFactory.getCurrentUser(function(response) {
-                        // vm.verifytoken = response.token,
-                        vm.loggedInUser = response.username
-                    });
+                    vm.loggedInUser = decodedToken.name;
+                    // UserDataFactory.getCurrentUser(function(response) {
+
+                    //     vm.loggedInUser = response.username
+                    // });
                     vm.username = "";
                     vm.password = "";
                     $location.path("/");

@@ -3,11 +3,13 @@ angular.module("meanGames").controller("GamesController", GamesController);
 function GamesController($routeParams, AuthFactory, GameDataFactory, $route) {
     const vm = this;
     vm.title = "Mean Games App";
-    let gameId = $routeParams.id;
+    vm.GameTitle = "Planet"
+    let yearid = $routeParams.yearid;
     // vm.isSubmitted=false;
     GameDataFactory.getAllGames().then(function(response) {
         vm.games = response;
     });
+
     vm.isLoggedIn = function() {
         // return AuthFactory.auth.isLoggedIn(); // kjo esht ideja po sedi pse nk hapet
         if (AuthFactory.auth.isLoggedIn) {
@@ -23,6 +25,12 @@ function GamesController($routeParams, AuthFactory, GameDataFactory, $route) {
 
             $route.reload();
 
+        });
+    }
+    vm.searchGame = function() {
+        GameDataFactory.searchbyyear().then(function(response) {
+            vm.searches = response
+            console.log(response);
         });
     }
     vm.addGame = function() {

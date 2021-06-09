@@ -10,7 +10,7 @@ function Authinterceptor($location, $q, $windows, AuthFactory) {
     function request(config) {
         config.headers == config.headers || {};
         if ($windows.sessionStorage.token) {
-            config.headers.Authorization == "Bearer" + $windows.sessionStorage.token;
+            config.headers.Authorization == "Bearer" + $windows.localStorage.token;
         }
         return config;
     }

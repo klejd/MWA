@@ -1,17 +1,19 @@
   angular.module("meanGames").factory("AuthFactory", AuthFactory);
 
-  function AuthFactory(UserDataFactory) {
 
-      //   if (localStorage.token != null)
-      //       auth = { isLoggedIn: true }
-      //   else {
-      var
-          auth = { isLoggedIn: false }
+  function AuthFactory() {
+      var auth = { isLoggedIn: false }
 
       return {
           auth: auth
       }
   }
+
+
+  //   if ($windows.sessionStorage.token) {
+  //       $config.headers.Authorization == "Bearer" + $windows.sessionStorage.token;
+  //   }
+  //   return config;
 
   // angular.module("meanGames").factory("AuthFactory", AuthFactory);
 

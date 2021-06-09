@@ -21,13 +21,37 @@ module.exports.display1 = (req, res) => {
 
 
 }
-
-
 module.exports.displayall = (req, res) => {
     let offset = 0;
     let count = 5;
     const maxCount = 15;
+    const search = req.query.search;
+    if (search) {
 
+        Game.find({ "title": search }).exec(function(err, games) {
+
+            if (err) {
+                response,
+                status = 500,
+                res.status(500).json({ "Error": err });
+            }
+            else {
+                total = 0;
+                Game.countDocuments({ "title": search }, function(err, result) {
+                    console.log(result);
+
+                    if (err) {
+                        res.send(err)
+                    } else {
+                        total = result;
+                    }
+
+                    res.status(200).json({ "games": games, "total": result });
+                })
+            }
+        });
+
+    }
     if (req.query && req.query.offset) {
         offset = parseInt(req.query.offset);
     }
@@ -51,6 +75,56 @@ module.exports.displayall = (req, res) => {
         });
     }
 }
+
+module.exports.searchbyyear = (req, res) => {
+    let search = req.query.search;
+    Game.find({ "title": search }).exec((err, games) => {
+        const response = {
+            status: 200,
+            message: games
+        };
+        if (err) {
+            response.status = 500;
+            response.message = err;
+        } else if (!games) {
+            response.message = { "message": "couldn't find it" };
+        } else {
+            res.status(200).json(games);
+        }
+    });
+
+
+}
+
+
+// module.exports.displayall = (req, res) => {
+//     let offset = 0;
+//     let count = 5;
+//     const maxCount = 15;
+
+//     if (req.query && req.query.offset) {
+//         offset = parseInt(req.query.offset);
+//     }
+//     if (req.query && req.query.count) {
+//         count = parseInt(req.query.count);
+//     }
+//     if (isNaN(offset) || isNaN(count)) {
+//         res.status(400).json({ message: "QueryString Offset and Count must be a number" });
+//         return;
+//     }
+//     if (count > maxCount) {
+//         res.status(400).json({ message: "QueryString Count must not exceed " + maxCount });
+//     } else {
+//         Game.find().skip(offset).limit(maxCount).exec((err, games) => {
+
+//             if (err) {
+//                 res.status(400).json(err);
+//             } else {
+//                 res.status(200).json(games);
+//             }
+//         });
+//     }
+// }
 
 
 module.exports.addone = (req, res) => {

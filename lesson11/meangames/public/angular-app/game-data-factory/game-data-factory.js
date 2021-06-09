@@ -6,7 +6,8 @@ function GameDataFactory($http) {
         getOneGame: getOneGame,
         addOneGame: addOneGame,
         deleteOneGame: deleteOneGame,
-        deleteOneGameIndex: deleteOneGameIndex
+        deleteOneGameIndex: deleteOneGameIndex,
+        searchbyyear: searchbyyear
     };
 
     function deleteOneGameIndex(id) {
@@ -23,6 +24,10 @@ function GameDataFactory($http) {
 
     function getAllGames() {
         return $http.get("/api/games").then(complete).catch(failed);
+    };
+
+    function searchbyyear(query1) {
+        return $http.get("/api/gamess?search=" + query1).then(complete).catch(failed);
     };
 
     function getOneGame(id) {
