@@ -1,0 +1,71 @@
+<br>
+<div class="container">
+
+    <form>
+        Search: <input type="text" class="form-control" [(ngModel)]="filterTerm" name="search" required />
+        <button type="submit" class="btn-success btn-lg">Search Game</button>
+
+    </form>
+    <br>
+    <!-- <form class="searchform">
+        <i class="fa fa-search">
+        <input type="search" name="jobs" [(ngModel)]="filterTerm" placeholder="'Software Engineer','Web Developer',etc..">
+    </i>
+        <button type="submit" style="margin-left: 25vw; margin-right: 25vw; " class="btn btn-primary btn-lg">Find</button>
+    </form> -->
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>year</th>
+            <th>Title</th>
+            <th>Rate</th>
+            <th>Price</th>
+            <th>MaxPlayers</th>
+            <th>MinPlayers</th>
+            <th>Delete</th>
+            <th>View</th>
+            <!-- <th>GDP(ascending)</th>-->
+        </tr>
+        <!-- orderBy Ascending (+) -->
+        <tr *ngFor="let game of games |filter:filterTerm">
+            <td>{{game.year}}</td>
+            <td>{{game.title}}</td>
+            <td>{{game.rate}}</td>
+            <td>{{game.price}}</td>
+            <td>{{game.maxPlayers}}</td>
+            <td>{{game.minPlayers}}</td>
+            <td>
+                <button (click)="deleteOneGame(game._id)" class="text text-danger ">Delete </button>
+            </td>
+            <td>
+                <button class="text text-danger "><a routerLink="/game/{{game._id}}" >View</a></button>
+            </td>
+            <!-- <td>{{country.gdp}}</td> -->
+        </tr>
+
+    </table>
+
+    <div>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-group ">
+            <div class="container ">
+                To add a new game please fill in all the fields below:
+                <BR/> Title: <input type="text " class="form-control " name="title " required [(ngModel)]="title" style="color:black " />
+                <BR/> Price: <input type="text " class="form-control " name="price " required [(ngModel)]="price" style="color:black " />
+                <BR/> Year of Publication: <input type="text " class="form-control " name="year " required [(ngModel)]="year" style="color:black " />
+                <BR/> Rating: <input type="text " name="rate " class="form-control " required [(ngModel)]="rate" style="color:black " />
+                <BR/> Minimum Number of Players: <input type="text " class="form-control " name="minPlayers " required [(ngModel)]="minPlayers" style="color:black " />
+                <!-- //Ui validation required its enough  for the ui others should be in the server side  -->
+                <!-- <span ng-show="vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid && vm.gameForm.isSubmitted " style="color:black ">Minimum players must be at least 1.</span> -->
+
+                <BR/> Maximum Number of Players: <input type="text " name="maxPlayers " class="form-control " required [(ngModel)]="maxPlayers" style="color:black " />
+                <BR/> Minimum Recommended Player Age: <input type="text " class="form-control " name="minAge " required [(ngModel)]="minAge" style="color:black " />
+                <BR/> Designer name: <input type="text " name="designers " class="form-control " required [(ngModel)]="designers" tyle="color:black " />
+                <BR/>
+
+                <button type="submit " class="btn-success ">Add Game</button>
+                <BR/>
+            </div>
+        </form>
+    </div>
+</div>
