@@ -1,0 +1,13 @@
+<br>
+<div class="container">
+    <form>
+
+        <h1>Search a game:</h1>
+        <input type="text" class="form-control" [(ngModel)]="filterTerm" name="search" placeholder="Type here" required />
+
+
+    </form>
+    <br>
+    <joke *ngFor="let j of jokes |filter:filterTerm" [joke]="j">
+    </joke>
+</div>

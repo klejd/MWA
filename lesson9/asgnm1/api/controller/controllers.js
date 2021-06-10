@@ -59,7 +59,7 @@ module.exports.addone = (req, res) => {
 
     if (req.body && req.body.title && req.body.price && req.body.rate) {
         const response = {
-            status: 200,
+            status: 201,
             message: Game
         }
         Game.create({
@@ -71,8 +71,6 @@ module.exports.addone = (req, res) => {
                 maxPlayers: req.body.maxPlayers,
                 minAge: parseInt(req.body.minAge),
                 designers: req.body.designers
-
-
             },
             (err, game) => {
                 if (err) {
